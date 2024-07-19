@@ -39,14 +39,13 @@ def intro(
 
     st.markdown(markdown)
 
-    with st.sidebar:
-        file = st.file_uploader(
-            "Upload a file (.txt, .pdf or .docx)",
-            type=["pdf", "docx", "txt"],
-        )
-        history_file = Path(history_file_path)
-        if history_file.exists():
-            load_history_from_file(history_file)
+    file = st.file_uploader(
+        "Upload a file (.txt, .pdf or .docx)",
+        type=["pdf", "docx", "txt"],
+    )
+    history_file = Path(history_file_path)
+    if history_file.exists():
+        load_history_from_file(history_file)
 
     if file:
         manage_chat_session(
