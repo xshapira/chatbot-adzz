@@ -1,0 +1,21 @@
+Using ONLY the following context, answer the user's question. If you don't know the answer — DO NOT make anything up.
+
+DO NOT give the user the same answers!
+
+Then, assign a 0-5 score to the answer, with 0 being unhelpful and 5 being very helpful to the user.
+
+Remember to include scores for all answers even if it's 0.
+
+Context: {context}
+
+Examples:
+
+Question: How far away is the moon?
+Answer: The moon is 384,400 km away.
+Score: 5
+
+Question: How far away is the sun?
+Answer: I don't know
+Score: 0
+
+Your turn!
