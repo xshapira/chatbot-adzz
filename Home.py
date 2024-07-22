@@ -35,9 +35,9 @@ def configure_chat_model():
 
 def run_chat_session(chat_model):
     intro_config = {
-        "page_title": "DocumentGPT",
-        "page_icon": "📄",
-        "title": "DocumentGPT",
+        "page_title": "CouponGuru",
+        "page_icon": "💰",
+        "title": "CouponGuru",
         "markdown": load_file("./markdowns/document_gpt.md"),
         "history_file_path": "./.cache/chat_history/history.json",
         "prompt": chat_model.prompt,

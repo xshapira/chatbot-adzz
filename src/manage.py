@@ -36,8 +36,12 @@ def intro(
     )
     st.title(title)
     st.markdown(markdown)
-    send_message("I'm ready! Ask away.", "ai", save=False)
-    message = st.chat_input("Ask me any question about your file")
+    send_message(
+        "I'm ready to be your personal deals assistant.",
+        "ai",
+        save=False,
+    )
+    message = st.chat_input("What deals are you hunting for today?")
     history_file = Path(history_file_path)
 
     if history_file.exists():
