@@ -2,6 +2,7 @@ from operator import itemgetter
 
 import streamlit as st
 from langchain.schema.runnable import RunnableLambda, RunnablePassthrough
+from langchain_community.retrievers import TavilySearchAPIRetriever
 
 from src.chat_session_manager import (
     display_chat_history,
@@ -10,7 +11,6 @@ from src.chat_session_manager import (
     save_history_to_file,
     send_message,
 )
-from src.embedder import Embedder
 
 
 def format_docs(docs):
@@ -27,7 +27,7 @@ def format_docs(docs):
     return "\n\n".join(document.page_content for document in docs)
 
 
-def manage_chat_session(file, prompt, llm, history_file_path, **kwargs):
+def manage_chat_session(prompt, llm, history_file_path, message, **kwargs):
     """
      Manages a chat session.
 
@@ -45,12 +45,10 @@ def manage_chat_session(file, prompt, llm, history_file_path, **kwargs):
         llm: The language model that will be used for generating responses in the chat session.
         history_file_path: The file path where the chat history will be saved.
     """
-    retriever = Embedder.embed_file(file, **kwargs)
-    send_message("I'm ready! Ask away.", "ai", save=False)
+    retriever = TavilySearchAPIRetriever(k=3)
     restore_history_from_memory()
     display_chat_history()
 
-    message = st.chat_input("Ask me any question about your file")
     if message:
         send_message(message, "human")
         chain = (
