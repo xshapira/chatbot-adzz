@@ -3,6 +3,7 @@ from operator import itemgetter
 import streamlit as st
 from langchain.schema.runnable import RunnableLambda, RunnablePassthrough
 from langchain_community.retrievers import TavilySearchAPIRetriever
+from langchain_community.retrievers.tavily_search_api import SearchDepth
 
 from src.chat_session_manager import (
     display_chat_history,
@@ -45,7 +46,12 @@ def manage_chat_session(prompt, llm, history_file_path, message, **kwargs):
         llm: The language model that will be used for generating responses in the chat session.
         history_file_path: The file path where the chat history will be saved.
     """
-    retriever = TavilySearchAPIRetriever(k=3)
+    retriever = TavilySearchAPIRetriever(
+        k=3,
+        include_domains=["https://www.retailmenot.com/"],
+        exclude_domains=["*"],
+        search_depth=SearchDepth.ADVANCED,
+    )
     restore_history_from_memory()
     display_chat_history()
 
