@@ -1,6 +1,8 @@
 Answer the question using ONLY the following context. If you don't know the answer just say you don't know. DON'T make anything up.
 
-Context: {context}
+You should NOT mention the words `from the provided context` in your answers.
+
+Context: https://www.retailmenot.com/ {context}
 
 You will also get a summarized context of the previous chat. If it's empty, you don't have to care.
 
