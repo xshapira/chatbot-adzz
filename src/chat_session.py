@@ -27,7 +27,7 @@ def format_docs(docs):
     return "\n\n".join(document.page_content for document in docs)
 
 
-def manage_chat_session(prompt, llm, history_file_path, message, **kwargs):
+def manage_chat_session(prompt, llm, message, **kwargs):
     """
      Manages a chat session.
 
