@@ -1,7 +1,7 @@
 *.DS_Store
 
 files/
-.streamlit
+.streamlit/secrets.toml
 .cache/
 out
 
