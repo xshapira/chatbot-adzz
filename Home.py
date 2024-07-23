@@ -39,7 +39,6 @@ def run_chat_session(chat_model):
         "page_icon": "💰",
         "title": "CouponGuru",
         "markdown": load_file("./markdowns/document_gpt.md"),
-        "history_file_path": "./.cache/chat_history/history.json",
         "prompt": chat_model.prompt,
         "llm": chat_model.llm,
         "chat_session_args": {

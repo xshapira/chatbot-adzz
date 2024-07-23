@@ -9,7 +9,6 @@ from src.chat_session_manager import (
     display_chat_history,
     restore_history_from_memory,
     save_history,
-    save_history_to_file,
     send_message,
 )
 
@@ -74,6 +73,3 @@ def manage_chat_session(prompt, llm, history_file_path, message, **kwargs):
         with st.chat_message("ai"):
             result = chain.invoke(message)
             save_history(message, result.content)
-
-        if len(st.session_state["memory"].chat_memory.messages) != 0:
-            save_history_to_file(history_file_path)

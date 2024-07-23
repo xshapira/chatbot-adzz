@@ -1,9 +1,7 @@
-from pathlib import Path
-
 import streamlit as st
 
 from src.chat_session import manage_chat_session
-from src.chat_session_manager import load_history_from_file, send_message
+from src.chat_session_manager import send_message
 
 
 def intro(
@@ -11,7 +9,6 @@ def intro(
     page_icon,
     title,
     markdown,
-    history_file_path,
     prompt,
     llm,
     chat_session_args,
@@ -24,7 +21,6 @@ def intro(
         page_icon: The icon that will be displayed in the browser tab for the page. It should be a URL or a file path to an image file (e.g., a .png or .ico file) that represents the icon.
         title: The title of the page or application
         markdown: A string containing the Markdown content to be displayed on the page.
-        history_file_path: The file path where the chat history will be saved.
         prompt: The initial message or question that will be displayed in the chat interface.
         llm: The language model to be used for the chat session.
         chat_session_args: A dictionary containing additional arguments for the `manage_chat_session` function. These arguments are passed to the function when it is called.
@@ -42,16 +38,11 @@ def intro(
         save=False,
     )
     message = st.chat_input("What deals are you hunting for today?")
-    history_file = Path(history_file_path)
-
-    if history_file.exists():
-        load_history_from_file(history_file)
 
     if message:
         manage_chat_session(
             prompt=prompt,
             llm=llm,
-            history_file_path=history_file_path,
             message=message,
             **chat_session_args,
         )
