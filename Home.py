@@ -1,3 +1,4 @@
+import streamlit as st
 from langchain.prompts import (
     ChatPromptTemplate,
     HumanMessagePromptTemplate,
@@ -55,6 +56,16 @@ def main() -> None:
     chat_model = configure_chat_model()
     chat_model.configure_chat_memory(chat_model.memory_llm)
     run_chat_session(chat_model)
+
+    hide_ui_elements = """
+    <style>
+    .reportview-container .main footer #MainMenu {visibility: hidden;}
+    </style>
+    """
+    st.markdown(hide_ui_elements, unsafe_allow_html=True)
+    st.write(
+        "<style>div.block-container{padding-top:2rem;}</style>", unsafe_allow_html=True
+    )
 
 
 if __name__ == "__main__":
