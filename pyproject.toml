@@ -21,7 +21,7 @@ pydub = "0.25.1"
 tavily-python = "^0.3.5"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "0.5.3"
+ruff = "0.5.4"
 basedpyright = "1.14.0"
 pre-commit = "3.7.1"
 ipykernel = "6.26.0"
