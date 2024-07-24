@@ -58,10 +58,12 @@ def main() -> None:
     run_chat_session(chat_model)
 
     hide_ui_elements = """
-    <style>
-    .reportview-container .main footer #MainMenu {visibility: hidden;}
-    </style>
-    """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
     st.markdown(hide_ui_elements, unsafe_allow_html=True)
     st.write(
         "<style>div.block-container{padding-top:2rem;}</style>", unsafe_allow_html=True
